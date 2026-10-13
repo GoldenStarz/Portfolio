@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Manrope", sans-serif;
+  --font-mono: "DM Mono", monospace;
+}
+
+:root {
+  font-family: var(--font-display);
+  color-scheme: dark;
+  background: #0b0b10;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+}
+
+::selection {
+  color: #0b0b10;
+  background: #c4b5fd;
+}
+
+:focus-visible {
+  outline: 2px solid #c4b5fd;
+  outline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .pointer-spotlight {
+    position: relative;
+    isolation: isolate;
+    --pointer-x: 50%;
+    --pointer-y: 50%;
+  }
+
+  .pointer-spotlight::before {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background: radial-gradient(260px circle at var(--pointer-x) var(--pointer-y), rgba(196, 181, 253, 0.08), transparent 76%);
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 240ms ease;
+  }
+
+  .pointer-spotlight:hover::before {
+    opacity: 1;
+  }
+
+  .pointer-spotlight > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
